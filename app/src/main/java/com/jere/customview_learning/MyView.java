@@ -5,10 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
-
-import org.w3c.dom.Text;
 
 import androidx.annotation.Nullable;
 
@@ -44,8 +43,25 @@ public class MyView extends View {
 //        drawRect(canvas);
 
         //画点
-        drawPoints(canvas);
+//        drawPoints(canvas);
 
+        //画椭圆
+//        drawOval(canvas);
+
+        //画直线
+//        drawLine(canvas);
+
+        //画圆角矩形
+//        drawRoundRect(canvas);
+
+        //画弧形
+//        drawArc(canvas);
+
+        //利用Path绘制爱心
+//        drawHeart(canvas);
+
+        //绘制直方图
+        drawHistogram(canvas);
 
         //画矩形
 //        canvas.drawRect(100, 100, 500, 500, paint);
@@ -133,4 +149,101 @@ public class MyView extends View {
         paint.setStrokeCap(Paint.Cap.SQUARE);
         canvas.drawPoint(200, 100, paint);
     }
+
+    /**
+     * 画椭圆
+     * @param canvas
+     */
+    private void drawOval(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.BLACK);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            canvas.drawOval(50, 50, 350, 200, paint);
+        }
+    }
+
+    /**
+     * 画直线
+     * @param canvas
+     */
+    private void drawLine(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(20);
+        paint.setColor(Color.BLUE);
+        canvas.drawLine(100, 100, 600, 200, paint);
+    }
+
+    /**
+     * 画圆角矩形
+     * @param canvas
+     */
+    private void drawRoundRect(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10);
+        paint.setColor(Color.BLACK);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            canvas.drawRoundRect(100, 100, 500, 300, 50, 50, paint);
+        }
+    }
+
+    /**
+     * 画弧形与扇形
+     * @param canvas
+     */
+    private void drawArc(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(20);
+        paint.setColor(Color.BLUE);
+//        canvas.drawLine(100, 100, 600, 200, paint);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //绘制扇形
+            canvas.drawArc(200, 100, 600, 500, -180, 90, true, paint);
+            //绘制弧形
+            paint.setColor(Color.RED);
+            canvas.drawArc(200, 100, 700, 600, 0, 180, false, paint);
+        }
+    }
+
+    /**
+     * 使用Path画心形
+     * @param canvas
+     */
+    private void drawHeart(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.RED);
+        Path path = new Path();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            path.addArc(200, 200, 400, 400, -225, 225);
+            path.arcTo(400, 200, 600, 400, -180, 225, false);
+            path.lineTo(400, 542);
+            canvas.drawPath(path, paint);
+        }
+    }
+
+    /**
+     * 绘制直方图
+     * @param canvas
+     */
+    private void drawHistogram(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5);
+        paint.setColor(Color.BLACK);
+
+        canvas.drawRect(100, 500, 150, 600, paint);
+
+        canvas.drawRect(150, 100, 200, 600, paint);
+        canvas.drawRect(200, 200, 250, 600, paint);
+        canvas.drawRect(250, 300, 300, 600, paint);
+        canvas.drawRect(300, 100, 350, 600, paint);
+        canvas.drawRect(350, 50, 400, 600, paint);
+        canvas.drawRect(400, 400, 450, 600, paint);
+        canvas.drawRect(450, 500, 500, 600, paint);
+    }
+
 }
