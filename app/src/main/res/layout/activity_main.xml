@@ -6,16 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <com.jere.customview_learning.MyTextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:MyText="Jere Text Custom Text View"-->
-<!--        app:MyTextColor="@color/dark_gray"-->
-<!--        app:MyTextSize="25sp"-->
-<!--        app:layout_constraintTop_toTopOf="parent"/>-->
-
-    <com.jere.customview_learning.MyView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <com.jere.customview_learning.MyCircleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:background="@color/dark_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:viewColor="@color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

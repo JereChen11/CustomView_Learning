@@ -5,4 +5,8 @@
         <attr name="MyTextColor" format="color" />
         <attr name="MyText" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="MyCircleView">
+        <attr name="viewColor" format="color" />
+    </declare-styleable>
 </resources>
