@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
  */
 public class MyCircleView extends View {
     private int mColor;
+
     public MyCircleView(Context context) {
         this(context, null);
     }

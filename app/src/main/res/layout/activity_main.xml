@@ -15,4 +15,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:viewColor="@color/black" />
 
+    <com.jere.customview_learning.HorizontalScrollViewEx
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JereTest"
+            android:textSize="35sp"
+            android:background="@color/red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JereTest"
+            android:textSize="35sp"
+            android:background="@color/green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JereTest"
+            android:textSize="35sp"
+            android:background="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JereTest"
+            android:textSize="35sp"
+            android:background="@color/greenYellow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JereTest"
+            android:textSize="35sp"
+            android:background="@color/yellow" />
+
+
+    </com.jere.customview_learning.HorizontalScrollViewEx>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
