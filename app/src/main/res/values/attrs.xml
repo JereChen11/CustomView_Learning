@@ -9,4 +9,13 @@
     <declare-styleable name="MyCircleView">
         <attr name="viewColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="MyTitleBarView">
+        <attr name="titleText" format="string" />
+        <attr name="titleTextSize" format="dimension" />
+        <attr name="titleTextColor" format="color" />
+        <attr name="isShowCancelBtn" format="boolean" />
+        <attr name="isShowFinishBtn" format="boolean" />
+
+    </declare-styleable>
 </resources>
