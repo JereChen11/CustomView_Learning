@@ -133,6 +133,7 @@ public class HorizontalScrollViewEx extends ViewGroup {
         int measuredHeight = 0;
         int childCount = getChildCount();
 
+        //对所有子View进行测量，会触发每一个子View的onMeasure()方法。
         measureChildren(widthMeasureSpec, heightMeasureSpec);
 
         int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
@@ -141,18 +142,26 @@ public class HorizontalScrollViewEx extends ViewGroup {
         int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
 
         if (childCount == 0) {
+            //没有子View，即当前ViewGroup没有存在的意义，不用占空间
             setMeasuredDimension(0, 0);
         } else if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST) {
+            //如果宽度与高度都设置成wrap_content
             final View childView = getChildAt(0);
+            //将宽度设置为所有子View的宽度之和
             measuredWidth = childView.getMeasuredWidth() * childCount;
+            //因为是水平的scrollView，但按理也需要取子View间的最大高度
             measuredHeight = childView.getMeasuredHeight();
             setMeasuredDimension(measuredWidth, measuredHeight);
         } else if (heightSpecMode == MeasureSpec.AT_MOST) {
+            //如果只有高度设置成wrap_content
             final View childView = getChildAt(0);
+            //因为是水平的scrollView，但按理也需要取子View间的最大高度
             measuredHeight = childView.getMeasuredHeight();
             setMeasuredDimension(widthSpecSize, measuredHeight);
         } else if (widthSpecMode == MeasureSpec.AT_MOST) {
+            //如果只有宽度设置成wrap_content
             final View childView = getChildAt(0);
+            //将宽度设置为所有子View的宽度之和
             measuredWidth = childView.getMeasuredWidth() * childCount;
             setMeasuredDimension(measuredWidth, heightSpecSize);
         }
@@ -163,14 +172,17 @@ public class HorizontalScrollViewEx extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childLeft = 0;
+        //获取子View的数量
         final int childCount = getChildCount();
         mChildrenSize = childCount;
 
+        //将子View逐个摆放
         for (int i = 0; i < childCount; i++) {
             final View childView = getChildAt(i);
             if (childView.getVisibility() != View.GONE) {
                 final int childWidth = childView.getMeasuredWidth();
                 mChildWidth = childWidth;
+                //摆放子View，参数分别对应子View矩形区域的left, top, right, bottom
                 childView.layout(childLeft, 0, childLeft + childWidth, childView.getMeasuredHeight());
                 childLeft += childWidth;
             }
